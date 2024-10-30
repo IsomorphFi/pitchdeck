@@ -1,46 +1,379 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Isomorph Staking Protocol</title>
-  <style>
-    /* Add your pitch deck styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .slide {
-      padding: 40px;
-      page-break-after: always;
-    }
-    
-    .slide h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    
-    .slide h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    
-    .slide p {
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    
-    .slide img {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isomorph Staking Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1a1a1a;
+            background: #ffffff;
+            line-height: 1.5;
+        }
+
+        /* Generic slide styles */
+        .slide {
+            min-height: 100vh;
+            padding: 60px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-after: always;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* Title slide (Slide 1) */
+        .slide:nth-of-type(1) {
+            background: linear-gradient(135deg, #0a2540 0%, #1a365d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide:nth-of-type(1) h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide:nth-of-type(1) p {
+            font-size: 1.5rem;
+            color: #a5b4fc;
+            margin-bottom: 3rem;
+        }
+
+        .slide:nth-of-type(1) img {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Problem & Solution slides (Slides 2-3) */
+        .slide:nth-of-type(2),
+        .slide:nth-of-type(3) {
+            background: #f8fafc;
+        }
+
+        .slide:nth-of-type(2) h1,
+        .slide:nth-of-type(3) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(2) p,
+        .slide:nth-of-type(3) p {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 800px;
+        }
+
+        /* Features slide (Slide 4) */
+        .slide:nth-of-type(4) {
+            background: #ffffff;
+        }
+
+        .slide:nth-of-type(4) h1 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #0f172a;
+        }
+
+        .slide:nth-of-type(4) ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .slide:nth-of-type(4) li {
+            font-size: 1.25rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* How It Works slide (Slide 5) */
+        .slide:nth-of-type(5) {
+            background: #0f172a;
+            color: white;
+        }
+
+        .slide:nth-of-type(5) h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .slide:nth-of-type(5) p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 800px;
+        }
+
+        /* Market Opportunity & Competitive Landscape (Slides 6-7) */
+        .slide:nth-of-type(6),
+        .slide:nth-of-type(7) {
+            background: #ffffff;
+        }
+
+        .slide:nth-of-type(6) h1,
+        .slide:nth-of-type(7) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(6) p,
+        .slide:nth-of-type(7) p {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 800px;
+        }
+
+        /* Roadmap slide (Slide 8) */
+        .slide:nth-of-type(8) {
+            background: #f8fafc;
+        }
+
+        .slide:nth-of-type(8) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 3rem;
+        }
+
+        .slide:nth-of-type(8) h2 {
+            font-size: 1.5rem;
+            color: #3b82f6;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .slide:nth-of-type(8) ul {
+            list-style-type: none;
+            margin-left: 1rem;
+        }
+
+        .slide:nth-of-type(8) li {
+            font-size: 1.125rem;
+            color: #475569;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .slide:nth-of-type(8) li::before {
+            content: "•";
+            color: #3b82f6;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Team slide (Slide 9) */
+        .slide:nth-of-type(9) {
+            background: #ffffff;
+        }
+
+        .slide:nth-of-type(9) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(9) p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(9) ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            list-style-type: none;
+        }
+
+        .slide:nth-of-type(9) li {
+            font-size: 1.125rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            color: #0f172a;
+        }
+
+        /* Traction & Milestones (Slide 10) */
+        .slide:nth-of-type(10) {
+            background: linear-gradient(135deg, #0a2540 0%, #1a365d 100%);
+            color: white;
+        }
+
+        .slide:nth-of-type(10) h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(10) p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(10) ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .slide:nth-of-type(10) li {
+            font-size: 1.125rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Funding & Use of Proceeds (Slide 11) */
+        .slide:nth-of-type(11) {
+            background: #ffffff;
+        }
+
+        .slide:nth-of-type(11) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(11) p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(11) ul {
+            list-style-type: none;
+            margin-left: 1rem;
+        }
+
+        .slide:nth-of-type(11) li {
+            font-size: 1.125rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .slide:nth-of-type(11) li::before {
+            content: "→";
+            color: #3b82f6;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Why Fuel Network (Slide 12) */
+        .slide:nth-of-type(12) {
+            background: #f8fafc;
+        }
+
+        .slide:nth-of-type(12) h1 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(12) p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(12) ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            list-style-type: none;
+        }
+
+        .slide:nth-of-type(12) li {
+            font-size: 1.125rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: #0f172a;
+        }
+
+        /* Investment Opportunity (Slide 13) */
+        .slide:nth-of-type(13) {
+            background: linear-gradient(135deg, #0a2540 0%, #1a365d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide:nth-of-type(13) h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .slide:nth-of-type(13) p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Add smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add slide transitions */
+        .slide {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+            
+            .slide h1 {
+                font-size: 2rem !important;
+            }
+            
+            .slide p {
+                font-size: 1rem !important;
+            }
+            
+            .slide ul {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Add placeholder image style */
+        img[src="logo.png"] {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
   <div class="slide">
     <h1>Isomorph Staking Protocol</h1>
     <p>Unlocking the power of liquid staking on Fuel Network</p>
-    <img src="logo.png" alt="Isomorph Staking Protocol Logo">
+    <img src="/api/placeholder/200/200" alt="Isomorph Staking Protocol Logo">
   </div>
   
   <div class="slide">
@@ -101,53 +434,3 @@
   </div>
   
   <div class="slide">
-    <h1>The Team</h1>
-    <p>Isomorph Staking Protocol is developed by a team of experienced blockchain engineers and researchers with a proven track record in building innovative DeFi solutions.</p>
-    <ul>
-      <li>John Doe - Founder and CEO</li>
-      <li>Jane Smith - Lead Developer</li>
-      <li>Alex Johnson - Blockchain Architect</li>
-      <li>Sarah Lee - Security Engineer</li>
-    </ul>
-  </div>
-  
-  <div class="slide">
-    <h1>Traction and Milestones</h1>
-    <p>Since launching the initial version of the protocol, Isomorph Staking has achieved the following milestones:</p>
-    <ul>
-      <li>500+ users staked ETH</li>
-      <li>$10 million in total value locked (TVL)</li>
-      <li>Successful integration with key Fuel Network DeFi applications</li>
-      <li>Positive feedback from the Fuel Network community</li>
-    </ul>
-  </div>
-  
-  <div class="slide">
-    <h1>Funding and Use of Proceeds</h1>
-    <p>We are seeking a grant from the Fuel Network Foundation to accelerate the development and adoption of the Isomorph Staking Protocol. The funding will be used for the following:</p>
-    <ul>
-      <li>Expand the engineering team to deliver the roadmap</li>
-      <li>Invest in marketing and community engagement</li>
-      <li>Enhance the protocol's security and auditing</li>
-      <li>Integrate with more Fuel Network DeFi applications</li>
-    </ul>
-  </div>
-  
-  <div class="slide">
-    <h1>Why Fuel Network?</h1>
-    <p>Fuel Network's unique features and capabilities make it an ideal platform for the Isomorph Staking Protocol:</p>
-    <ul>
-      <li>High-performance blockchain infrastructure</li>
-      <li>Vibrant and supportive developer community</li>
-      <li>Commitment to decentralization and scalability</li>
-      <li>Complementary DeFi ecosystem</li>
-    </ul>
-  </div>
-  
-  <div class="slide">
-    <h1>Investment Opportunity</h1>
-    <p>By supporting the Isomorph Staking Protocol, you can be part of a transformative liquid staking solution that unlocks the full potential of the Fuel Network ecosystem.</p>
-    <p>Together, we can drive the widespread adoption of decentralized finance and empower users to maximize the value of their crypto assets.</p>
-  </div>
-</body>
-</html>
